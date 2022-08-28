@@ -17,4 +17,5 @@ namespace Exercises.Models
 
         public string Type { get; set; }
     }
+
 }

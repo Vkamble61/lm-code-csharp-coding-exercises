@@ -8,36 +8,44 @@ namespace Exercises
     {
         public string CapitalizeWord(string word)
         {
-            // Replace the exception statement below with your code!
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(word))
+                return word;
+            else
+                return word[0].ToString().ToUpper() + word[1..word.Length];
         }
 
         public string GenerateInitials(string firstName, string lastName)
         {
-            // Replace the exception statement below with your code!
-            throw new NotImplementedException();
+            return firstName[0].ToString() + "." + lastName[0].ToString();
         }
 
         public double AddVat(double originalPrice, double vatRate)
         {
-            // Replace the exception statement below with your code!
-            throw new NotImplementedException();
-
-            // NB: Look in Exercise001Tests.cs
-            //     There is a test with commented out assertions.
-            //     For an extra challenge, uncomment those assertions and make that test pass too.
+            return (double)Convert.ToDecimal(string.Format("{0:0.00}", originalPrice + (originalPrice * (vatRate / (double)100))));
         }
 
         public string Reverse(string sentence)
         {
-            // Replace the exception statement below with your code!
-            throw new NotImplementedException();
+            if (sentence != null)
+            {
+                string sentence1;
+                char[] array1 = sentence.ToCharArray();
+                Array.Reverse(array1);               
+                sentence1 = new string(array1);
+                return sentence1;
+            }else
+                return sentence;
         }
 
         public int CountLinuxUsers(List<User> users)
         {
-            // Replace the exception statement below with your code!
-            throw new NotImplementedException();
+            int linuxCnt = 0;
+
+            if (users != null)
+            {
+                users.ForEach(userOSType => { if (userOSType.Type == "Linux") linuxCnt++; });
+            }
+            return linuxCnt;
         }
     }
 }
