@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Exercises.Models;
+using System.Linq;
 
 namespace Exercises
 {
@@ -8,10 +9,7 @@ namespace Exercises
     {
         public string CapitalizeWord(string word)
         {
-            if (string.IsNullOrWhiteSpace(word))
-                return word;
-            else
-                return word[0].ToString().ToUpper() + word[1..word.Length];
+            return string.IsNullOrWhiteSpace(word) ? word : word[0].ToString().ToUpper() + word[1..word.Length];
         }
 
         public string GenerateInitials(string firstName, string lastName)
@@ -19,33 +17,36 @@ namespace Exercises
             return firstName[0].ToString() + "." + lastName[0].ToString();
         }
 
-        public double AddVat(double originalPrice, double vatRate)
+        public double CalculateVat(double originalPrice, double vatRate)
         {
             return (double)Convert.ToDecimal(string.Format("{0:0.00}", originalPrice + (originalPrice * (vatRate / (double)100))));
         }
 
+        public double AddVat(double originalPrice, double vatRate)
+        {
+            if (originalPrice < 0)
+                throw new ArgumentException(message: "Price cannot be negative. Please enter a valid price.");
+            else if (vatRate < 0)
+                throw new ArgumentException(message: "VAT cannot be negative. Please enter a valid VAT.");
+            else
+                return CalculateVat(originalPrice, vatRate);
+        }
+
         public string Reverse(string sentence)
         {
+            string reverseSentence = "";
             if (sentence != null)
             {
-                string sentence1;
                 char[] array1 = sentence.ToCharArray();
-                Array.Reverse(array1);               
-                sentence1 = new string(array1);
-                return sentence1;
-            }else
-                return sentence;
+                Array.Reverse(array1);
+                reverseSentence = new string(array1);
+            }
+            return sentence == null ? sentence : reverseSentence;
         }
 
         public int CountLinuxUsers(List<User> users)
         {
-            int linuxCnt = 0;
-
-            if (users != null)
-            {
-                users.ForEach(userOSType => { if (userOSType.Type == "Linux") linuxCnt++; });
-            }
-            return linuxCnt;
+            return users == null ? 0 : users.Count(u1 => u1.Type == "Linux");
         }
     }
 }

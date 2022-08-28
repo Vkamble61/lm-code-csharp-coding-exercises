@@ -21,12 +21,11 @@ namespace Exercises
                     if (!input.ToString().Contains(ch))
                         flag = "Missing";
                 }
-
                 if (flag == "Missing") return false;
                 else return true;
             }
             else
-                return false;
+                return false;            
         }
     }
 }

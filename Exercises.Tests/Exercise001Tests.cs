@@ -46,11 +46,10 @@ namespace Exercises.Tests
         [Test]
         public void AddVat_Should_Throw_Argument_Exception()
         {
-            // Advanced challenge - uncomment these lines and make this test pass too.
-            //var ex = Assert.Throws<ArgumentException>(() => Exercise001.AddVat(-25, 0));
-            //Assert.That(ex.Message, Is.EqualTo("Price cannot be negative. Please enter a valid price."));
-            //ex = Assert.Throws<ArgumentException>(() => Exercise001.AddVat(25, -5));
-            //Assert.That(ex.Message, Is.EqualTo("VAT cannot be negative. Please enter a valid VAT."));
+            var ex = Assert.Throws<ArgumentException>(() => Exercise001.AddVat(-25, 0));
+            Assert.That(ex.Message, Is.EqualTo("Price cannot be negative. Please enter a valid price."));
+            ex = Assert.Throws<ArgumentException>(() => Exercise001.AddVat(25, -5));
+            Assert.That(ex.Message, Is.EqualTo("VAT cannot be negative. Please enter a valid VAT."));
         }
 
         [Test]
@@ -73,8 +72,6 @@ namespace Exercises.Tests
         [Test]
         public void CountLinuxUsers_Should_Return_Zero_For_No_Linux_Users()
         {
-            // This is using the latest C# language features
-            // This is the same as doing User u1 = new User("Heather", "Windows 10", "Windows");
             User u1 = new("Heather", "Windows 10", "Windows");
             User u2 = new("Paul", "Windows 95", "Windows");
 
@@ -90,8 +87,6 @@ namespace Exercises.Tests
         [Test]
         public void CountLinuxUsers_Should_Return_Correct_Count()
         {
-            // This is using the latest C# language features
-            // This is the same as doing User u1 = new User("Heather", "Windows 10", "Windows");
             User u1 = new("Heather", "Windows 10", "Windows");
             User u2 = new("Paul", "Windows 95", "Windows");
             User u3 = new("Sheila", "CentOS 7", "Linux");
